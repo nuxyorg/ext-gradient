@@ -6,13 +6,17 @@ function ensureLayerStyles(): void {
   const link = document.createElement('link')
   link.id = STYLE_ID
   link.rel = 'stylesheet'
-  link.href = `nuxy-ext://${GRADIENT_EXT_ID}/nuxy-gradient-layer.css`
+  link.href = `nuxy-ext://${GRADIENT_EXT_ID}/layer.css`
   document.head.appendChild(link)
 }
 
 export class NuxyGradientLayerElement extends HTMLElement {
-  private gInstance: { play?: () => void; pause?: () => void; resize?: () => void; mesh?: unknown } | null =
-    null
+  private gInstance: {
+    play?: () => void
+    pause?: () => void
+    resize?: () => void
+    mesh?: unknown
+  } | null = null
   private observer: ResizeObserver | null = null
   private pauseTimeout: ReturnType<typeof setTimeout> | null = null
   private compositionOff: (() => void) | null = null

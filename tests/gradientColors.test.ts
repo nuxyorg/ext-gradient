@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { GRADIENT_COLORS, applyGradientColors } from './gradientColors.ts'
+import { GRADIENT_COLORS, applyGradientColors } from '../utils/gradientColors.ts'
 
 describe('GRADIENT_COLORS', () => {
   it('contains exactly four color entries', () => {

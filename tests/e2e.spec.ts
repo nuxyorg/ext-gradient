@@ -1,6 +1,12 @@
 // fallow-ignore-file code-duplication
-import { test, expect } from '../../src/e2e/fixtures.js'
-import { resetShell, openTool, typeInOmnibar, submitOmnibar, waitForToolMounted } from '../e2e-helpers.js'
+import { test, expect } from '../../../src/e2e/fixtures.js'
+import {
+  resetShell,
+  openTool,
+  typeInOmnibar,
+  submitOmnibar,
+  waitForToolMounted,
+} from '../../e2e-helpers.js'
 
 const openGradient = (page: any) => openTool(page, 'gradient')
 
@@ -12,9 +18,14 @@ test.describe('gradient extension', () => {
   })
 
   test('shell gradient canvas has non-zero width and height', async ({ appPage }) => {
-    await appPage.waitForSelector('#nuxy-shell-gradient-canvas', { state: 'attached', timeout: 5000 })
+    await appPage.waitForSelector('#nuxy-shell-gradient-canvas', {
+      state: 'attached',
+      timeout: 5000,
+    })
     const dimensions = await appPage.evaluate(() => {
-      const canvas = document.getElementById('nuxy-shell-gradient-canvas') as HTMLCanvasElement | null
+      const canvas = document.getElementById(
+        'nuxy-shell-gradient-canvas'
+      ) as HTMLCanvasElement | null
       if (!canvas) return null
       const rect = canvas.getBoundingClientRect()
       return { width: rect.width, height: rect.height }
@@ -31,9 +42,7 @@ test.describe('shell gradient border and glow', () => {
     await appPage.waitForSelector('input', { timeout: 400 })
   })
 
-  test('shell gradient canvas is hidden by default when no tool is active', async ({
-    appPage,
-  }) => {
+  test('shell gradient canvas is hidden by default when no tool is active', async ({ appPage }) => {
     await resetShell(appPage)
 
     const container = appPage.locator('nuxy-shell')
