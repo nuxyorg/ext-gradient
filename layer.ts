@@ -44,7 +44,7 @@ export class NuxyGradientLayerElement extends LitElement {
   }
 
   @queryDecorator('#nuxy-shell-gradient-canvas')
-  private canvasEl!: HTMLCanvasElement
+  declare private canvasEl: HTMLCanvasElement
 
   private gInstance: {
     play?: () => void
